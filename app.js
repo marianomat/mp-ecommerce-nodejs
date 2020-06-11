@@ -47,19 +47,20 @@ app.get('/detail', function (req, res) {
               number: 22223333
             },
             address: {
-              zip_code: "1111",
               street_name: "False",
-              street_number: 123
+              street_number: 123,
+              zip_code: "1111"
             }
         },
         payment_methods: {
-            installments: 6,
-            excluded_payments_methods: [{
+            
+            excluded_payment_methods: [{
               id: "amex"
             }],
-            excluded_payments_types: [{
+            excluded_payment_types: [{
               id: "atm"
-            }]
+            }],
+            installments: 6
         },
         back_urls: {
             success: "https://marianomat-mp-commerce-nodejs.herokuapp.com/response/",
