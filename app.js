@@ -84,6 +84,7 @@ app.get('/detail', function (req, res) {
 
 app.post("/procesar-pago", (req,res) => {
   console.log(req.body)
+  res.send("errorrrrrrr")
 })
 app.post("/webhook", (req,res) => {
     //FUNCIONA
