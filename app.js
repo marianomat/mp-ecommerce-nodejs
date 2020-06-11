@@ -21,12 +21,7 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get("/response/:id", (req,res) => {
-  console.log(req.params.id)
-  console.log(req.body)
-  console.log(req)  
-  res.send("errorrrrrrr")
-});
+
 
 app.get('/detail', function (req, res) {
     let infoProducto = req.query
@@ -91,11 +86,17 @@ app.post("/procesar-pago", (req,res) => {
   console.log(req.body)
 })
 app.post("/webhook", (req,res) => {
-
+    //FUNCIONA
     console.log(req.query)
     console.log(req.body)
     res.status(200).send('OK')
 })
+app.post("/response/:id", (req,res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+  console.log(req)  
+  res.send("errorrrrrrr")
+});
 
 app.use(express.static('assets'));
  
