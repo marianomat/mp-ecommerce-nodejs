@@ -78,7 +78,7 @@ app.get('/detail', function (req, res) {
         global.init_point = response.body.init_point;
         init_point = response.body.id;
         
-       console.log(response.body.items)
+       console.log(response.body)
        res.render('detail', {query: req.query, init_point: init_point});
     })    
 });
