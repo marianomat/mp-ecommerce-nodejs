@@ -9,6 +9,7 @@ const   express     = require('express'),
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json())
 
 mercadopago.configure({
     integrator_id: 'dev_24c65fb163bf11ea96500242ac130004',
@@ -20,8 +21,11 @@ app.get('/', function (req, res) {
     res.render('home');
 });
 
-app.get("/fail", (req,res) => {
-    res.send("errorrrrrrr")
+app.get("/response/:id", (req,res) => {
+  console.log(req.params.id)
+  console.log(req.body)
+  console.log(req)  
+  res.send("errorrrrrrr")
 });
 
 app.get('/detail', function (req, res) {
@@ -56,18 +60,18 @@ app.get('/detail', function (req, res) {
         payment_methods: {
             installments: 6,
             excluded_payments_methods: [{
-              id: ""
+              id: "amex"
             }],
             excluded_payments_types: [{
-              id: ""
+              id: "atm"
             }]
         },
         back_urls: {
-            success: "/fail",
-            pending: "/fail",
-            failure: "/fail"
+            success: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/",
+            pending: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/",
+            failure: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/"
         },
-        notification_url: "https://marianomat-mp-commerce-nodejs.herokuapp.com/webhook",
+        notification_url: "https://marianomat-mp-commerce-nodejs.herokuapp.com//webhook",
         auto_return: "approved",
         external_reference: "marianopereyra95@gmail.com"
     };
@@ -87,7 +91,7 @@ app.post("/procesar-pago", (req,res) => {
   console.log(req.body)
 })
 app.post("/webhook", (req,res) => {
-    console.log(req)
+
     console.log(req.query)
     console.log(req.body)
     res.status(200).send('OK')
