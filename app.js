@@ -25,16 +25,16 @@ app.get('/', function (req, res) {
 
 app.get('/detail', function (req, res) {
     let infoProducto = req.query
-    
+    let imagen = "https://marianomat-mp-commerce-nodejs.herokuapp.com" + infoProducto.img.substr(1)
     let preference = {
         items: [
           {
             id: "1234",
             title: infoProducto.title,
-            description: "Dispositivo movil de Tienda e-commerce",
-            unit_price: Number(infoProducto.price),
+            description: "Dispositivo móvil de Tienda e-commerce",
+            unit_price: Number(infoProducto.price), 
             quantity: 1,
-            picture_url: infoProducto.img,
+            picture_url: imagen,
             currency_id: 'ARS',
           }
         ],
@@ -77,24 +77,35 @@ app.get('/detail', function (req, res) {
         global.init_point = response.body.init_point;
         init_point = response.body.id;
         
-       console.log(response)
+       console.log(response.body.items)
        res.render('detail', {query: req.query, init_point: init_point});
     })    
 });
 
 app.post("/procesar-pago", (req,res) => {
+  console.log("***** PROCESAR PAGO  1 ******")
   console.log(req.body)
-  res.send("errorrrrrrr")
+  console.log("***** PROCESAR PAGO  1 ******")
+  res.send("Gracias")
 })
 app.post("/webhook", (req,res) => {
     //FUNCIONA
+
+    console.log("***** WEBHOOK  1 ******")
     console.log(req.query)
+    console.log("***** WEBHOOK  1 ******")
+
+    console.log("***** WEBHOOK  2 ******")
     console.log(req.body)
+    console.log("***** WEBHOOK  2 ******")
     res.status(200).send('OK')
 })
 app.post("/response/:id", (req,res) => {
+  console.log("***** RESPONSE 1 ******")
   console.log(req.params.id)
+  console.log("***** RESPONSE 2 ******")
   console.log(req.body)
+  console.log("***** RESPONSE 3 ******")
   console.log(req)  
   res.send("errorrrrrrr")
 });
