@@ -67,11 +67,11 @@ app.get('/detail', function (req, res) {
             }]
         },
         back_urls: {
-            success: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/",
-            pending: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/",
-            failure: "https://marianomat-mp-commerce-nodejs.herokuapp.com//response/"
+            success: "https://marianomat-mp-commerce-nodejs.herokuapp.com/response/",
+            pending: "https://marianomat-mp-commerce-nodejs.herokuapp.com/response/",
+            failure: "https://marianomat-mp-commerce-nodejs.herokuapp.com/response/"
         },
-        notification_url: "https://marianomat-mp-commerce-nodejs.herokuapp.com//webhook",
+        notification_url: "https://marianomat-mp-commerce-nodejs.herokuapp.com/webhook",
         auto_return: "approved",
         external_reference: "marianopereyra95@gmail.com"
     };
